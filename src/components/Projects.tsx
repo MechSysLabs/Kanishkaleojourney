@@ -2,7 +2,7 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { ExternalLink, Calendar, Users, Award } from 'lucide-react';
-import leoEventImage from 'figma:asset/e6da6bd7b38c2cce749b210e083242866173fb49.png';
+import leoEventImage from 'figma:asset/c78c72761d3642d37280b811c2ee9647eaa29f07.png';
 import bestNewClubImage from 'figma:asset/4ec809ba3838c4cda6754e1d4ac3da49b9670302.png';
 import leoWalkImage from 'figma:asset/95c9731185c174f8d5de08fe9383b0413315b3aa.png';
 import leoGatheringsImage from 'figma:asset/9aea858778e0e1a7b2c8a546640c1ef2a252c676.png';

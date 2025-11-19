@@ -1,5 +1,5 @@
 import awardCeremony1 from 'figma:asset/6820eef08b9fe138f27392da7cc25c132ab9c0d8.png';
-import mainCollagePhoto from 'figma:asset/c78c72761d3642d37280b811c2ee9647eaa29f07.png';
+import mainCollagePhoto from 'figma:asset/e6da6bd7b38c2cce749b210e083242866173fb49.png';
 import awardCeremony2 from 'figma:asset/a1e2936cff41966e9c0c60c7bdd7416e268d09f4.png';
 import leoClubFormalPhoto from 'figma:asset/bb5dbba0932b303de18c9d632177437379ea9756.png';
 import awardsDisplayPhoto from 'figma:asset/fa1b4bd6d6941c44625aaf2443dadc9fc618067c.png';
