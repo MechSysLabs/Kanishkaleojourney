@@ -3,8 +3,53 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Mail, Phone, MapPin, Facebook } from 'lucide-react';
+import { useState } from 'react';
 
 export function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Format the WhatsApp message
+    const whatsappMessage = `Hello! I'm ${formData.name}
+
+Email: ${formData.email}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}`;
+    
+    // WhatsApp number (remove spaces and +)
+    const whatsappNumber = '94769005794';
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Open WhatsApp with pre-filled message
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+    
+    // Optionally reset the form
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-cyan-900 via-cyan-800 to-cyan-700 text-white">
       <div className="container mx-auto px-6">
@@ -78,21 +123,29 @@ export function Contact() {
                 <CardTitle className="text-2xl text-gray-900">Start a Conversation</CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium mb-2 text-gray-700">Name</label>
                       <Input 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
                         placeholder="Your name" 
                         className="bg-gray-50 border-gray-200 focus:border-cyan-500 focus:ring-cyan-500"
+                        required
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2 text-gray-700">Email</label>
                       <Input 
-                        type="email" 
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         placeholder="your@email.com" 
                         className="bg-gray-50 border-gray-200 focus:border-cyan-500 focus:ring-cyan-500"
+                        required
                       />
                     </div>
                   </div>
@@ -100,17 +153,25 @@ export function Contact() {
                   <div>
                     <label className="block text-sm font-medium mb-2 text-gray-700">Subject</label>
                     <Input 
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
                       placeholder="What's this about?" 
                       className="bg-gray-50 border-gray-200 focus:border-cyan-500 focus:ring-cyan-500"
+                      required
                     />
                   </div>
                   
                   <div>
                     <label className="block text-sm font-medium mb-2 text-gray-700">Message</label>
                     <Textarea 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
                       placeholder="Tell me about your project or how we can work together..." 
                       rows={5}
                       className="bg-gray-50 border-gray-200 focus:border-cyan-500 focus:ring-cyan-500"
+                      required
                     />
                   </div>
                   
@@ -119,7 +180,7 @@ export function Contact() {
                     className="w-full bg-cyan-600 hover:bg-cyan-700 text-white"
                     size="lg"
                   >
-                    Send Message
+                    Send via WhatsApp
                   </Button>
                 </form>
               </CardContent>
